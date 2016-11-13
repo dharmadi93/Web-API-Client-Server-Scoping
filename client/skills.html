@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="col-sm-12">
-        <h1 id="title" class="text-center">Title</h1>
+        <h1 id="title" class="text-center">Title Skills</h1>
         <button id="changeTitle" data-heading="It Can Change" class="btn btn-success text-center">Change Title</button>
     </div>
 </div>
@@ -20,18 +20,19 @@
 
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="lib/purl/purl.js"></script>
 <script>
     let xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             $('button[id="changeTitle"]').click(function () {
-                let titleChange = $('button[id="changeTitle"]').attr('data-heading')
+                let titleChange = $.url().param('title');
                 $('#title').text(titleChange)
             })
         }
     }
 
-    xhr.open("GET", "http://localhost:3000/api/title", true)
+    xhr.open("GET", "http://localhost:3000/api/skills", true)
     xhr.send()
 
 </script>

@@ -28,7 +28,7 @@ bower install bootstrap --save
 ```
 | Endpoind      | HTTP      | Description                       |
 | ----------    | -----     | ------------                      |
-| api/todo      | GET       | Change title with attribute       |
-| api/skills/   | GET       | Change title with data from url   |
-| api/meals/    | GET       | Change title with random data     |
+| api/title     | GET       | Change title with attribute       |
+| api/skills    | GET       | Change title with data from url   |
+| api/meals     | GET       | Change title with random data     |
 ```
