@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 id="title">Title</h1>
+<button id="changeTitle" data-heading="It Can Change">Change Title</button>
+</body>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $('button[id="changeTitle"]').click(function () {
+                let titleChange = $('button[id="changeTitle"]').attr('data-heading')
+                $('#title').text(titleChange)
+            })
+        }
+    }
+
+    xhr.open("GET", "http://localhost:3000/api/title", true)
+    xhr.send()
+
+</script>
+
+</html>
