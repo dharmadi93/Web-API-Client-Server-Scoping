@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="col-sm-12">
+        <h1 id="title" class="text-center">Title</h1>
+        <button id="changeTitle" data-heading="It Can Change" class="btn btn-success text-center">Change Title</button>
+    </div>
+</div>
+
+</body>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function(data) {
+        if (this.readyState == 4 && this.status == 200) {
+            $('button[id="changeTitle"]').click(function () {
+                let meals = JSON.parse(data.currentTarget.responseText)
+                let randMeal = meals[Math.floor(Math.random()*meals.length)];
+                let titleChange = randMeal
+                $('#title').text(titleChange)
+            })
+        }
+    }
+
+    xhr.open("GET", "http://localhost:3000/api/meals", true)
+    xhr.send()
+
+</script>
+
+</html>
